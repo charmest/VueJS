@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="./styles.css" />
+		<title>Cafe with a Vue</title>
+	</head>
+	<body>
+		<div id="app" class="app">
+			<h1>{{ restaurantName }}</h1>
+			<p class="description">
+				Bienvenue dans notre café {{ restaurantName }}! Nous sommes réputés pour
+				notre pain et nos merveilleuses pâtisseries. Faites vous plaisir dès le
+				matin ou avec un goûter réconfortant. Mais attention, vous verrez qu'il
+				est difficile de s'arrêter.
+			</p>
+
+			<h2>Contactez nous</h2>
+			<p>Adresse : {{ restaurantAddress }}</p>
+			<p>Téléphone : {{ restaurantPhoneNumber }}</p>
+			<p>Email : {{ restaurantEmail }}</p>
+			<p>Horaires :</p>
+			<ul>
+				<li>L-V: 06:00 à 16:00</li>
+				<li>Samedi: 07:00 à 14:00</li>
+				<li>Dimanche: 07:00 à 12:00</li>
+			</ul>
+
+			<footer class="footer">
+				<p>{{ copyright }}</p>
+			</footer>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					restaurantName: "Café avec vue",
+					restaurantAddress: "18 avenue du Beurre, Paris, France",
+					restaurantPhoneNumber: "01 88 88 88 88",
+					restaurantEmail: "hello@cafewithavue.bakery"
+				},
+				computed: {
+					copyright() {
+						const currentYear = new Date().getFullYear()
+						return `Copyright ${this.restaurantName} ${currentYear}`
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
