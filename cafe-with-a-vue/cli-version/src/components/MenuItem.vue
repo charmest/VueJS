@@ -2,10 +2,6 @@
 export default {
 	name: "MenuItem",
 	props: {
-		addToShoppingCart: {
-			type: Function,
-			required: true
-		},
 		image: {
 			type: Object,
 			required: true
@@ -30,6 +26,11 @@ export default {
 	data() {
 		return {
 			onSale: false
+		}
+	},
+	methods: {
+		updateShoppingCart(quantity) {
+			this.$emit('add-items-to-cart', quantity)
 		}
 	},
 	computed: {
@@ -57,15 +58,15 @@ export default {
 		<div>
 			<h3>{{ name }}</h3>
 			<p>
-				Prix : {{ generatedPrice }}
-				<span v-if="onSale">(10% de réduction!)</span>
+				Prix: {{ generatedPrice }}
+				<span v-if="onSale">(10% de réduction !)</span>
 			</p>
 			<p v-if="inStock">En stock</p>
 			<p v-else>En rupture de stock</p>
 			<div>
 				<label for="add-item-quantity">Quantité : {{ quantity }}</label>
 				<input v-model.number="quantity" id="add-item-quantity" type="number" />
-				<button @click="addToShoppingCart(quantity)">
+				<button @click="updateShoppingCart(quantity)">
 					Ajouter au panier
 				</button>
 			</div>

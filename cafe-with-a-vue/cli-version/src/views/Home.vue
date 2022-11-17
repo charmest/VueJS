@@ -12,7 +12,7 @@
 			<h2>Menu</h2>
 			<MenuItem
 				v-for="item in simpleMenu"
-				:addToShoppingCart="addToShoppingCart"
+				@add-items-to-cart="addToShoppingCart"
 				:name="item.name"
 				:image="item.image"
 				:price="item.price"
@@ -23,7 +23,7 @@
 		</section>
 
 		<div class="shopping-cart">
-			<h2>Panier: {{ shoppingCart }} articles</h2>
+			<h2>Panier : {{ shoppingCart }} articles</h2>
 		</div>
 
 		<footer class="footer">
