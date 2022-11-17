@@ -1,5 +1,5 @@
 <template>
-	<div id="app" class="app">
+	<div>
 		<h1>{{ restaurantName }}</h1>
 		<p class="description">
 			Bienvenue dans notre café {{ restaurantName }}! Nous sommes réputés pour
@@ -15,15 +15,16 @@
 				:addToShoppingCart="addToShoppingCart"
 				:name="item.name"
 				:image="item.image"
+				:price="item.price"
 				:quantity="item.quantity"
 				:inStock="item.inStock"
 				:key="item.name"
 			/>
 		</section>
 
-		<aside class="shopping-cart">
-			<h2>Panier d'achat : {{ shoppingCart }} articles</h2>
-		</aside>
+		<div class="shopping-cart">
+			<h2>Panier: {{ shoppingCart }} articles</h2>
+		</div>
 
 		<footer class="footer">
 			<p>{{ copyright }}</p>
@@ -41,7 +42,7 @@ export default {
 	},
 	data() {
 		return {
-			restaurantName: "La belle Vue",
+			restaurantName: "La belle vue",
 			shoppingCart: 0,
 			simpleMenu: [
 				{
@@ -51,7 +52,8 @@ export default {
 						alt: "Un croissant"
 					},
 					inStock: true,
-					quantity: 1
+					quantity: 1,
+					price: 2.99
 				},
 				{
 					name: "Baguette de pain",
@@ -60,7 +62,8 @@ export default {
 						alt: "Quatre baguettes de pain"
 					},
 					inStock: true,
-					quantity: 1
+					quantity: 1,
+					price: 3.99
 				},
 				{
 					name: "Éclair",
@@ -69,7 +72,8 @@ export default {
 						alt: "Éclair au chocolat"
 					},
 					inStock: false,
-					quantity: 1
+					quantity: 1,
+					price: 4.99
 				}
 			]
 		}
@@ -88,3 +92,29 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+.description {
+	max-width: 960px;
+	font-size: 1.2rem;
+	margin: 0 auto;
+}
+
+.footer {
+	font-style: italic;
+	text-align: center;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.shopping-cart {
+	position: absolute;
+	right: 30px;
+	top: 0;
+}
+</style>
