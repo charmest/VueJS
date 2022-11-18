@@ -9,7 +9,7 @@ export default new Vuex.Store({
   // de manière à ne pas dupliquer les states --> ...mapState(["month", "year", "day"]) dans autre composant
   state: {
     shoppingCart: 0,
-    restaurantName: "La belle vue",
+    restaurantName: "La boulangerie",
     simpleMenu: [
 				{
 					name: "Croissant",
